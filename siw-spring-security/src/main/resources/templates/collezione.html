@@ -1,0 +1,49 @@
+ <!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+ <link rel="stylesheet" th:href=@{/css/collezione/collezione.css} />
+ <head th:replace="fragments/myH.html :: headerfiles(title=#{pageTitle.collezione})"> 
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+    <section>
+    	<div class ="title">
+    		<h1> <b>Black and White drawings that I really like</b></h1>
+    		<p><b>Curatore: </b> Stanislaw Koprinski</p>
+    	</div>
+    	<!-- voglio provare a fare l'effetto transizione sulla foto, quindi prima prova -->
+    	<!-- flexbox container -->
+    <div class = "row">
+    	<div class = "container">
+    		<img src="imgs/quadro1.jpg" alt="Quadro" class="image">
+    		<div class="overlay">
+    			<div class="text">
+    				<a href = "#autore">Giorgio</a>
+    				<a href = "#titolo">Titolo</a>
+    			</div>
+  			</div>
+    	</div>
+    	<div class = "container">
+    		<img src="imgs/quadro2.jpg" alt="Quadro" class="image">
+    		<div class="overlay">
+    			<div class="text">
+    				<a href = "#autore">Luca</a>
+    				<a href = "#titolo">Titolo</a>
+    			</div>
+  			</div>
+    	</div>
+    	<div class = "container">
+    		<img src="imgs/quadro3.jpg" alt="Quadro" class="image">
+    		<div class="overlay">
+    			<div class="text">
+    				<a href = "#autore">Sara</a>
+    				<a href = "#titolo">Titolo</a>
+    			</div>
+  			</div>
+    	</div>
+    </div>
+    </section>
+   <footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+  </body>
+</html>

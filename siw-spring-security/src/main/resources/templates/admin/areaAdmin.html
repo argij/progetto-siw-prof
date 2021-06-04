@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+ <link rel="stylesheet" th:href=@{/css/adminOp/admin.css} />
+ <head th:replace="fragments/myH.html :: headerfiles(title=#{admin})"> 
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+     <section>
+     	<div class="title"><p>Azioni possibili</p></div>
+     	<div class ="container">
+     	<div class="list">
+     		<a href="quadroForm" th:href="@{/admin/quadro}">&#9820; Inserisci un nuovo quadro</a>
+     		<a href="artistaForm" th:href="@{/admin/artista}">&#9820; Inserisci un nuovo artista</a>
+     		<a href="collezioneForm" th:href="@{/admin/collezione}">&#9820; Crea una nuova collezione</a>
+     		<a href="#">&#9820; Elimina un artista</a>
+     		<a href="#">&#9820; Elimina un quadro</a>
+     		<a href="#">&#9820; Elimina una collezione</a>
+     	</div>
+     	</div>
+     </section> 
+    <footer th:replace="fragments/myH.html :: fondo(index='/default')"></footer>
+  </body>
+</html>

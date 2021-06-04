@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <link th:href="@{/css/adminOp/artistaForm.css}" rel="stylesheet">
+  <head th:replace="fragments/myH.html :: headerfiles(title=#{title.formCollezione})">
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+    <section>
+    <div class="title">
+		<p>Inserisci i dati della collezione</p>
+	</div>
+	<form th:action="@{/admin/collezione}" method="POST" th:object="${collezione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div class="inserisci">
+			<div class ="row">
+				<div class="col-1"><label>Nome:</label></div>
+				<div class="col-2"><input type="text" th:field="*{nome}" /></div>
+				<div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+			</div>
+			<div class ="row">
+				<div class="col-1"><label>Descrizione:</label></div>
+				<div class="col-2"><textarea th:field="*{descrizione}" class="bio" style="height:200px; width:50%" /></textarea></div>
+				<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+			</div>
+			<div class="row">
+				<div class="col-1"><label>Stile:</label></div>
+				<div class="col-2"><select id="stile" th:field="*{stile}">
+					<option th:each="stile : ${T(it.uniroma3.siw.spring.model.Stile).values()}" 
+							th:value="${stile}" th:text="${stile.getValue()}"></option>
+      			</select></div>
+      		</div>
+			<div class="row">
+				<div class="col-1"><label>Curatore:</label></div>
+				<div class="col-2"><select id="curatore" th:field="*{curatore}">
+					<option th:each="curatore : ${curatori}" 
+							th:value="${curatore.id}" th:text="${curatore.nome + ' ' + curatore.cognome}"></option>
+      			</select></div>
+      		</div>
+      					<div class ="row">
+				<span><button type="submit" id="invio">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	</section>
+    <footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>		

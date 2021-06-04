@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{/css/userOp/registrationSuccessful.css}" rel="stylesheet">
+<head th:replace="fragments/myH.html :: headerfiles(title='Esito Registrazione')"> </head>
+<body>
+	<div class="title"></div>
+    	<div class="testo">
+    		Registrazione avvenuta con successo!
+    	</div>
+    	<div class="button">
+    		<a href="index" th:href="@{/index}"><button type="button" class="back"> Torna indietro </button></a>
+    	</div>
+	<footer th:replace="fragments/myH.html :: fondo(index)"></footer>
+</body>
+</html>

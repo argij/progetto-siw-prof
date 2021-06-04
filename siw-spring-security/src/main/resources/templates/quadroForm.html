@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<link th:href="@{/css/adminOp/artistaForm.css}" rel="stylesheet">
+  <head th:replace="fragments/myH.html :: headerfiles(title=#{title.formQuadro})">
+    <meta charset="utf-8" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <nav th:replace="fragments/myH.html :: nav(index='/default')"></nav>
+    <section>
+    <div class="title">
+		<p>Inserisci i dati del quadro</p>
+	</div>
+	<form th:action="@{/admin/quadro}" method="POST" th:object="${quadro}" enctype="multipart/form-data">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div class="inserisci">
+			<div class ="row">
+				<div class="col-1"><label>Titolo:</label></div>
+				<div class="col-2"><input type="text" th:field="*{titolo}" /></div>
+				<div th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></div>
+			</div>		
+			<div class ="row">
+				<div class="col-1"><label>Descrizione:</label></div>
+				<div class="col-2"><textarea th:field="*{descrizione}" class="bio" style="height:200px; width:50%" /></textarea></div>
+				<div th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></div>
+			</div>
+			<div class ="row">
+				<div class="col-1"><label>Anno:</label></div>
+				<div class="col-2"><input type="number" th:field="*{anno}" /></div>
+				<div th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></div>
+			</div>
+			<div class="row">
+				<div class="col-1"><label>Artista:</label></div>
+				<div class="col-2"><select id="artista" th:field="*{artista}">
+					<option th:each="artista : ${artisti}" 
+							th:value="${artista.id}" th:text="${artista.nome + ' ' + artista.cognome}"></option>
+      			</select></div>
+			</div>
+			<div class="row">
+				<div class="col-1"><label>Collezione:</label></div>
+				<div class="col-2"><select id="collezione" th:field="*{collezione}">
+					<option th:each="collezione : ${collezioni}" 
+							th:value="${collezione.id}" th:text="${collezione.nome}"></option>
+      			</select></div>
+			</div>
+			<div class ="row">
+				<div class="col-1"><label>Immagine:</label></div>
+				<div class="col-2"><input type="file" name="image" accept="image/png, image/jpeg" /></div>
+			</div>
+			<div class ="row">
+				<span><button type="submit" id="invio">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	</section>
+    <footer th:replace="fragments/myH.html :: fondo(index='/')"></footer>
+</body>
+</html>
